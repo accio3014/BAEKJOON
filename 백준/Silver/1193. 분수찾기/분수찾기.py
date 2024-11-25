@@ -1,18 +1,27 @@
-X=int(input())
+X = int(input())
 
-line=1
-while(X>line):      # 몇 번째 라인인지를 판단
-    X -= line
-    line+=1
+# 라인수의 끝 값은 1, 3, 6, 10, 15, 21... triangular number이기 때문에 이것을 사용하여 몇 번째 라인인지 계산
+# triangular number : n(n+1)/2
+n = 1
+triangular_number = 1
 
-# print(line)
-# print(X)
+while(X > triangular_number) :
+    n += 1
+    triangular_number = n * (n + 1) / 2
 
-if(line%2==0):      # 짝수 라인인 경우
-    a=X
-    b=line-X+1
-else:               # 홀수 라인인 경우
-    a=line-X+1
-    b=X
-    
-print('%d/%d' % (a, b))
+# print(n)
+
+# 몇 번째 숫자인지 판단하기 위해 이전 제일 마지막 숫자를 X에서 빼면 됨
+last_triangular_number = (n-1) * ((n-1) + 1) // 2
+index = X - last_triangular_number
+# print(index)
+
+
+if(n % 2 == 0) :
+    a = index
+    b = n - index + 1
+else:
+    a = n - index + 1
+    b = index
+
+print("%d/%d" % (a, b))
